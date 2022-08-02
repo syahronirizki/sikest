@@ -9,18 +9,19 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PasienSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pasien';
+$this->title = 'Pendaftaran Pasien';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasien-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <br>
     <p>
-        <?= Html::a('Create Pasien', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah Data Pasien', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -37,10 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'Jenis_Kelamin',
             // 'no_Telp',
             [
-                    'class' => ActionColumn::className(),
-                    'urlCreator' => function ($action, $model, $key, $index, $column) {
-                        return Url::toRoute([$action, 'id_pasien' => $model->id_pasien]);
-                    },
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id_pasien' => $model->id_pasien]);
+                },
             ],
         ],
     ]); ?>

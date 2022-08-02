@@ -38,7 +38,12 @@ class Obat extends \yii\db\ActiveRecord
     {
         return [
             'id_obat' => 'Id Obat',
-            'nama_obat' => 'Nama Obat',
+            'nama_obat' => 'Obat',
         ];
+    }
+
+    public function getTindakan()
+    {
+        return $this->hasOne(PenangananPasien::class, ['id_obat' => 'id_obat']);
     }
 }

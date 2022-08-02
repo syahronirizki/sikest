@@ -46,21 +46,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
-            'admins' => ['admin', 'root'],
+            'admins' => ['admin'],
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',

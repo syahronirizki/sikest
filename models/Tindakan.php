@@ -44,4 +44,9 @@ class Tindakan extends \yii\db\ActiveRecord
             'tarif' => 'Tarif',
         ];
     }
+
+    public function getStatusTindakan()
+    {
+        return $this->hasOne(PenangananPasien::class, ['id_tindakan' => 'id_tindakan']);
+    }
 }

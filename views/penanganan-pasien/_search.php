@@ -19,15 +19,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tgl_penanganan') ?>
 
-    <?= $form->field($model, 'nama_pasien') ?>
+    <?= $form->field($model, 'id_pasien') ?>
 
     <?= $form->field($model, 'poliklinik') ?>
 
-    <?= $form->field($model, 'status_berobat') ?>
+    <?= $form->field($model, 'id_tindakan') ?>
 
     <?php // echo $form->field($model, 'keluhan') ?>
 
-    <?php // echo $form->field($model, 'obat') ?>
+    <?php // echo $form->field($model, 'id_obat') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

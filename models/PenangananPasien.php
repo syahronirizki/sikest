@@ -3,17 +3,17 @@
 namespace app\models;
 
 use Yii;
-use app\models\Obat;
+
 /**
  * This is the model class for table "penanganan_pasien".
  *
  * @property int $id_penanganan
  * @property string $tgl_penanganan
- * @property string $nama_pasien
+ * @property int $id_pasien
  * @property string $poliklinik
- * @property string $status_berobat
+ * @property int $id_tindakan
  * @property string $keluhan
- * @property string $obat
+ * @property int $id_obat
  */
 class PenangananPasien extends \yii\db\ActiveRecord
 {
@@ -31,8 +31,9 @@ class PenangananPasien extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tgl_penanganan', 'nama_pasien', 'poliklinik', 'status_berobat', 'keluhan', 'obat'], 'required'],
-            [['tgl_penanganan', 'nama_pasien', 'poliklinik', 'status_berobat', 'keluhan', 'obat'], 'string', 'max' => 100],
+            [['tgl_penanganan', 'id_pasien', 'poliklinik', 'id_tindakan', 'keluhan', 'id_obat'], 'required'],
+            [['id_pasien', 'id_tindakan', 'id_obat'], 'integer'],
+            [['tgl_penanganan', 'poliklinik', 'keluhan'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,16 +45,26 @@ class PenangananPasien extends \yii\db\ActiveRecord
         return [
             'id_penanganan' => 'Id Penanganan',
             'tgl_penanganan' => 'Tgl Penanganan',
-            'nama_pasien' => 'Nama Pasien',
+            'id_pasien' => 'Nama Pasien',
             'poliklinik' => 'Poliklinik',
-            'status_berobat' => 'Status Berobat',
+            'id_tindakan' => 'Tindakan',
             'keluhan' => 'Keluhan',
-            'obat' => 'Obat',
+            'id_obat' => 'Obat',
         ];
     }
 
-        public function getObatku()
-        {
-            return $this->hasOne(Obat::className(), ['obat' => 'id_obat']);
-        }
+    public function getObatku()
+    {
+        return $this->hasOne(Obat::class, ['id_obat' => 'id_obat']);
+    }
+
+    public function getStatus()
+    {
+        return $this->hasOne(Tindakan::class, ['id_tindakan' => 'id_tindakan']);
+    }
+
+    public function getPasien()
+    {
+        return $this->hasOne(Pasien::class, ['id_pasien' => 'id_pasien']);
+    }
 }

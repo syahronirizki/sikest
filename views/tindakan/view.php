@@ -6,15 +6,15 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tindakan */
 
-$this->title = $model->id_tindakan;
+$this->title = $model->tindakan;
 $this->params['breadcrumbs'][] = ['label' => 'Tindakan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="tindakan-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <br>
     <p>
         <?= Html::a('Update', ['update', 'id_tindakan' => $model->id_tindakan], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id_tindakan' => $model->id_tindakan], [
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_tindakan',
+            // 'id_tindakan',
             'tindakan',
             'tarif',
         ],

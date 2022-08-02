@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\PenangananPasien;
 use app\models\PenangananPasienSearch;
+use app\models\Tagihan;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -68,7 +69,7 @@ class PenangananPasienController extends Controller
     public function actionCreate()
     {
         $model = new PenangananPasien();
-
+        $modelTagihan = new Tagihan();
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id_penanganan' => $model->id_penanganan]);
@@ -79,6 +80,7 @@ class PenangananPasienController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelTagihan' => $modelTagihan
         ]);
     }
 

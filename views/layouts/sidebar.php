@@ -40,7 +40,7 @@
                     ['label' => 'Login', 'url' => ['/user/security/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     // ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                     // ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
-                    ['label' => 'MASTER CRUD', 'icon'=>'tachometer-alt',
+                    ['label' => 'MASTER CRUD', 'icon'=>'tachometer-alt' , 'visible' => !Yii::$app->user->isGuest,
                     'items' => [
                         ['label' => 'Wilayah', 'icon' => 'place-of-worship', 'url' => ['wilayah/index']],
                         [
@@ -55,16 +55,16 @@
                         ['label' => 'Obat', 'icon' => 'pills', 'url' => ['obat/index']]
                     ]
                 ],
-                    ['label' => 'MENU TRANSAKSI', 'icon' => 'bars',
+                    ['label' => 'MENU TRANSAKSI', 'icon' => 'bars', 'visible' => !Yii::$app->user->isGuest,
                     'items' => [
                         ['label' => 'Pendaftaran Pasien', 'icon' => 'list', 'url' => ['pasien/index']],
                         ['label' => 'Tindakan dan Obat Pasien', 'icon' => 'list', 'url' => ['penanganan-pasien/index']]
                         ]
                 ],
-                    ['label' => 'MENU INFORMASI', 'header' => true],
-                    ['label' => 'Pembayaran Tagihan', 'icon' => 'receipt', 'url' => ['tagihan/index']],
-                    ['label' => 'MENU LAPORAN', 'header' => true],
-                    ['label' => 'Grafik', 'icon' => 'chart-line'],
+                    ['label' => 'MENU INFORMASI', 'header' => true, 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Pembayaran Tagihan', 'icon' => 'receipt', 'url' => ['tagihan/index'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'MENU LAPORAN', 'header' => true, 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Grafik', 'icon' => 'chart-line', 'url' => ['chart/index'], 'visible' => !Yii::$app->user->isGuest],
                     // ['label' => 'Logout', 'icon' => 'sign-out-alt', 'url' => ['/user/security/logout'], 'template'=>'<a href="{url}" data-method="post">{label}</a>'],
                     // ['label' => 'Logout', 'icon' => 'sign-out-alt', 'url' => ['/user/security/logout'], 'linkOptions' => ['data-method' => 'post']],
                 ],

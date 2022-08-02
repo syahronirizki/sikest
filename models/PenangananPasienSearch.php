@@ -14,12 +14,11 @@ class PenangananPasienSearch extends PenangananPasien
     /**
      * {@inheritdoc}
      */
-
     public function rules()
     {
         return [
-            [['id_penanganan'], 'integer'],
-            [['tgl_penanganan', 'nama_pasien', 'poliklinik', 'status_berobat', 'keluhan', 'obat'], 'safe'],
+            [['id_penanganan', 'id_pasien', 'id_tindakan', 'id_obat'], 'integer'],
+            [['tgl_penanganan', 'poliklinik', 'keluhan'], 'safe'],
         ];
     }
 
@@ -42,6 +41,7 @@ class PenangananPasienSearch extends PenangananPasien
     public function search($params)
     {
         $query = PenangananPasien::find();
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -59,14 +59,15 @@ class PenangananPasienSearch extends PenangananPasien
         // grid filtering conditions
         $query->andFilterWhere([
             'id_penanganan' => $this->id_penanganan,
+            'id_pasien' => $this->id_pasien,
+            'id_tindakan' => $this->id_tindakan,
+            'id_obat' => $this->id_obat,
         ]);
 
         $query->andFilterWhere(['like', 'tgl_penanganan', $this->tgl_penanganan])
-            ->andFilterWhere(['like', 'nama_pasien', $this->nama_pasien])
             ->andFilterWhere(['like', 'poliklinik', $this->poliklinik])
-            ->andFilterWhere(['like', 'status_berobat', $this->status_berobat])
-            ->andFilterWhere(['like', 'keluhan', $this->keluhan])
-            ->andFilterWhere(['like', 'obat', $this->obat]);
+            ->andFilterWhere(['like', 'keluhan', $this->keluhan]);
+
         return $dataProvider;
     }
 }

@@ -14,13 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="obat-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <br>
     <p>
-        <?= Html::a('Create Obat', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah Obat', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id_obat' => $model->id_obat]);
-                 }
+                }
             ],
         ],
     ]); ?>

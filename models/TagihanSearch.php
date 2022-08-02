@@ -17,8 +17,8 @@ class TagihanSearch extends Tagihan
     public function rules()
     {
         return [
-            [['id_tagihan'], 'integer'],
-            [['nama_pasien', 'namaitem1', 'hargaitem1', 'namaitem2', 'hargaitem2', 'totalharga', 'status_pembayaran'], 'safe'],
+            [['id_tagihan', 'id_pasien', 'id_obat', 'id_tindakan'], 'integer'],
+            [['status_pembayaran'], 'safe'],
         ];
     }
 
@@ -59,15 +59,12 @@ class TagihanSearch extends Tagihan
         // grid filtering conditions
         $query->andFilterWhere([
             'id_tagihan' => $this->id_tagihan,
+            'id_pasien' => $this->id_pasien,
+            'id_obat' => $this->id_obat,
+            'id_tindakan' => $this->id_tindakan,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_pasien', $this->nama_pasien])
-            ->andFilterWhere(['like', 'namaitem1', $this->namaitem1])
-            ->andFilterWhere(['like', 'hargaitem1', $this->hargaitem1])
-            ->andFilterWhere(['like', 'namaitem2', $this->namaitem2])
-            ->andFilterWhere(['like', 'hargaitem2', $this->hargaitem2])
-            ->andFilterWhere(['like', 'totalharga', $this->totalharga])
-            ->andFilterWhere(['like', 'status_pembayaran', $this->status_pembayaran]);
+        $query->andFilterWhere(['like', 'status_pembayaran', $this->status_pembayaran]);
 
         return $dataProvider;
     }
